@@ -1,12 +1,18 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
+import { shallow } from 'enzyme';
+import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
+import BodySection from './BodySection';
 
-configure({adapter: new Adapter()});
-
-
-it("should render correctly a BodySection", () => {
-    const wrapper = shallow(<BodySectionWithMarginBottom title="Log in to continue" />)
-    expect(wrapper.html()).toContain('<div class="bodySectionWithMargin"><div class="bodySection"><h2>Log in to continue</h2></div></div>')
+describe('BodySectionWithMarginBottom tests', () => {
+    it('renders properly', () => {
+        shallow(<BodySectionWithMarginBottom />);
+    });
+    it ('check content of component and rendering', () => {
+        const children = <p>children of section</p>;
+        const wrapper = shallow(<BodySectionWithMarginBottom title='test' children={children}/>);
+        const section = wrapper.find(BodySection);
+        expect(section.exists()).toBeTruthy();
+        expect(section.prop('title')).toEqual('test');
+        expect(section.prop('children')).toEqual(children); 
+    })
 })

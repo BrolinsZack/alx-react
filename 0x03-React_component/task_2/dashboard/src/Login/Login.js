@@ -1,32 +1,20 @@
-import React from 'react'
-import { StyleSheet, css } from "aphrodite";
+import React from 'react';
+import './Login.css';
 
-function Login(){
-    return(
-      <React.Fragment>
-          <div className={css(styles.login)}>
-          <p>Login to access the full dashboard</p>
-          <div className="form">
-          <label htmlFor="Email">Email: </label>
-          <input type="text"></input>
-          <label htmlFor="Password">Password: </label>
-          <input type="password"></input>
-          <button type="submit">OK</button>
-          </div>
-        </div>
-      </React.Fragment>
-    )
+function Login() {
+  return (
+    <React.Fragment>
+      <div className="App-login">
+        <p>Login to access the full dashboard</p>
+        <label htmlFor="email">email</label>
+        <input type="email" id="email"></input>
+        <label htmlFor="password">password</label>
+        <input type="password" id="password"></input>
+        <button>Ok</button>
+      </div>
+    </React.Fragment>
+  );
 }
 
-const styles = StyleSheet.create({
-  login: {
-    margin: "50px",
-    flexGrow: 1,
-  },
+export default Login;
 
-  loginInput: {
-    marginLeft: "10px",
-    marginRight: "20px",
-  },
-});
-export default Login

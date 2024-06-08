@@ -1,17 +1,14 @@
-import {getFullYear, getFooterCopy, getLatestNotification} from './utils';
+import * as Utils from './utils';
 
-test('getFullYear', () =>{
-    expect(getFullYear()).toEqual(new Date().getFullYear());
+it('check year', () => {
+    expect(Utils.getFullYear()).toEqual(2020);
 });
 
-test('getFooterCopyT', ()=>{
-    expect(getFooterCopy(true)).toEqual('Holberton School')
+it('check footer copy', () => {
+    expect(Utils.getFooterCopy(true)).toEqual('Holberton School');
+    expect(Utils.getFooterCopy(false)).toEqual('Holberton School main dashboard');
 })
 
-test('getFooterCopyF', ()=>{
-    expect(getFooterCopy(false)).toEqual('Holberton School main dashboard')
-})
-
-test('getLatestNotification', () =>{
-    expect(getLatestNotification()).toEqual('<strong>Urgent requirement</strong> - complete by EOD')
+it('check latest notifications', () => {
+    expect(Utils.getLatestNotification()).toEqual('<strong>Urgent requirement</strong> - complete by EOD');
 })

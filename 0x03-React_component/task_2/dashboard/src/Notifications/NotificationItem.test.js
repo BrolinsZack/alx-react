@@ -1,21 +1,14 @@
 import React from 'react';
-import NotificationItem from "./NotificationItem.js"
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter()});
+import { shallow } from 'enzyme';
+import sinon from 'sinon';
+import NotificationItems from './NotificationItem';
 
-
-it(" rendering of the component", () => {
-    const wrapper = shallow(<NotificationItem type="default" value="test"/>)
-    expect(wrapper.exists()).toEqual(true);
-})
-
-it("renders the correct Props ", () => {
-    const wrapper = shallow(<NotificationItem type="default" value="test"/>)
-    expect(wrapper.props()).toContain('{"children": "test", "data-priority": "default", "onClick": [Function onClick]}')
-})
-
-it("renders the correct html", () => {
-    const wrapper = shallow(< NotificationItem type="urgent" html={{ __html: '<u>test</u>' }} />)
-    expect(wrapper.html()).toEqual('<li data-priority=\"urgent\"><u>test</u></li>')
+describe('Notification item tests', () => {
+  it('test notification item on click', () => {
+    const onclick = jest.fn();
+    
+    const wrapper = shallow(<NotificationItems markAsRead={onclick} id='1' />);
+    wrapper.find('li').first().simulate('click');
+    expect(onclick).toBeCalled();
+  })
 })
